@@ -10,9 +10,16 @@ public enum PlayerAnimationState
     JUMP
 }
 
+[System.Serializable]
+public struct Boundary
+{
+    public float min;
+    public float max;
+}
+
 public class PlayerController : MonoBehaviour
 {
-    [Header("MovementPropertries")]
+    [Header("Movement Propertries")]
     public float horizontalForce;
     public float horizontalSpeed;
     public float verticalForce;
@@ -21,6 +28,8 @@ public class PlayerController : MonoBehaviour
     public float groundRadius; // the sizer of the circle
     public LayerMask groundLayerMask;// the stuff we can collide with 
     public bool isGrounded;
+
+    [Header("Boundary Propertries")]
 
     [Header("Animations")]
     public Animator animator;
