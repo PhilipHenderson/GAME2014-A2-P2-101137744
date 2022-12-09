@@ -13,7 +13,7 @@ public class HawkController : MonoBehaviour
     
     public bool isDetected;
     
-    public PlayerDetection isPlayerDetected;
+    public HawkPlayerDetection isPlayerDetected;
 
     private void Awake()
     {

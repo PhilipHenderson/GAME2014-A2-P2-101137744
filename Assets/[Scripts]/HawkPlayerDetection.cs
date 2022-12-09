@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerDetection : MonoBehaviour
+//make this script the Hawk Player Detection Script
+public class HawkPlayerDetection : MonoBehaviour
 {
     public bool playerDetected;
     public bool LOS;

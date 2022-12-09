@@ -10,13 +10,6 @@ public enum PlayerAnimationState
     JUMP
 }
 
-[System.Serializable]
-public struct Boundary
-{
-    public float min;
-    public float max;
-}
-
 public class PlayerController : MonoBehaviour
 {
     [Header("Movement Propertries")]

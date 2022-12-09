@@ -15,7 +15,7 @@ TagManager:
   - Prop
   - Platform
   - Enemy
-  - 
+  - Bullet
   - 
   - 
   - 
@@ -49,6 +49,9 @@ TagManager:
     locked: 0
   - name: Foreground2
     uniqueID: 171102913
+    locked: 0
+  - name: Platform
+    uniqueID: 2356686941
     locked: 0
   - name: Props
     uniqueID: 1581352359
