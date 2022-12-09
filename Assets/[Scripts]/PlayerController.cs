@@ -26,27 +26,31 @@ public class PlayerController : MonoBehaviour
     public float airFactor;
     public Transform groundPoint; // Origion of the circle
     public float groundRadius; // the sizer of the circle
-    public LayerMask groundLayerMask;// the stuff we can collide with 
+    public LayerMask collisionLayerMask;// the stuff we can collide with 
     public bool isGrounded;
 
-    [Header("Boundary Propertries")]
+    [Header("Controls")]
+    public Joystick leftStick;
+    public float verticalThreathhold;
+    [Range(0.1f, 1f)]
 
     [Header("Animations")]
     public Animator animator;
     public PlayerAnimationState playerAnimationState;
 
-    private Rigidbody2D rigidbody2D;
+    public Rigidbody2D rigidbody2D;
 
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        leftStick = (Application.isMobilePlatform) ? GameObject.Find("LeftStick").GetComponent<Joystick>() : null;
     }
 
 
     void FixedUpdate()
     {
-        var hit = Physics2D.OverlapCircle(groundPoint.position, groundRadius, groundLayerMask);
+        var hit = Physics2D.OverlapCircle(groundPoint.position, groundRadius, collisionLayerMask);
         isGrounded = hit;
 
         Move();
@@ -56,7 +60,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        var x = Input.GetAxisRaw("Horizontal");
+        var x = Input.GetAxisRaw("Horizontal") + ((Application.isMobilePlatform) ? leftStick.Horizontal : 0.0f);
 
         if (x != 0.0f)
         {
@@ -80,9 +84,9 @@ public class PlayerController : MonoBehaviour
 
     private void Jump()
     {
-        var y = Input.GetAxis("Jump");
+        var y = Input.GetAxis("Jump") + ((Application.isMobilePlatform) ? leftStick.Vertical : 0.0f);
 
-        if ((isGrounded) && (y > 0.0f))
+        if ((isGrounded) && (y > verticalThreathhold))
         {
             rigidbody2D.AddForce(Vector2.up * verticalForce, ForceMode2D.Impulse);
         }
