@@ -146,5 +146,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  flying: 1
-  climbing: 0
+  direction: {x: 0, y: 0}
+  flying: 0
+  climbing: 1
+  currentPosition: {x: 0, y: 0}
+  boundary1: -5
+  boundary2: 5

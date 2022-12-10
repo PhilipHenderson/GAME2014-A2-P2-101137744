@@ -4,37 +4,68 @@ using UnityEngine;
 
 public class PlatformController : MonoBehaviour
 {
+    [Header("Platform Properties")]
     public float speed = 1.0f;
-
-    [Header("Flying Platform Properties")]
+    public Vector2 direction;
     public bool flying;
-    private Vector3 flyVector;
-
-    [Header("Flying Platform Properties")]
     public bool climbing;
-    private Vector3 climbVector;
+    [SerializeField]
+    private Vector2 currentPosition;
+    public float boundary1;
+    public float boundary2;
 
-    public void Awake()
-    {
-        climbVector.y = speed;
-        flyVector.x = speed;
-    }
+
     private void Start()
     {
-        flying = true;
+        if (flying)
+        {
+            direction = Vector2.right;
+        }
+        if (climbing)
+        {
+            direction = Vector2.up;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        currentPosition = transform.position;
     }
 
     void Update()
     {
         if (flying)
         {
-            transform.position += flyVector * speed * Time.deltaTime;
+            if (transform.position.x < boundary1)
+            {
+                direction.x *= -1.0f;
+            }
+            if (transform.position.x > boundary2)
+            {
+                direction.x *= -1.0f;
+            }
+            Move();
         }
 
         if (climbing)
         {
-            transform.position += climbVector * speed * Time.deltaTime;
+            //direction = Vector2.up;
+            if (transform.position.y < boundary1)
+            {
+                direction.y *= -1.0f;
+            }
+            if (transform.position.y > boundary2)
+            {
+                direction.y *= -1.0f;
+            }
+            Move();
         }
+    }
+
+    public void Move()
+    {
+        if(flying) transform.position += new Vector3(direction.x, 0.0f) * speed * Time.deltaTime;
+        if(climbing) transform.position += new Vector3(0.0f, direction.y) * speed * Time.deltaTime;
     }
 
 
