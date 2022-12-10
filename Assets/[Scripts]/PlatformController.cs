@@ -9,6 +9,7 @@ public class PlatformController : MonoBehaviour
     public Vector2 direction;
     public bool flying;
     public bool climbing;
+    public bool rdyToMove;
     [SerializeField]
     private Vector2 currentPosition;
     public float boundary1;
@@ -23,7 +24,7 @@ public class PlatformController : MonoBehaviour
         }
         if (climbing)
         {
-            direction = Vector2.up;
+            direction = Vector2.down;
         }
     }
 
@@ -49,16 +50,18 @@ public class PlatformController : MonoBehaviour
 
         if (climbing)
         {
-            //direction = Vector2.up;
-            if (transform.position.y < boundary1)
+            if (rdyToMove)
             {
-                direction.y *= -1.0f;
+                if (transform.position.y < boundary1)
+                {
+                    direction.y *= -1.0f;
+                }
+                if (transform.position.y > boundary2)
+                {
+                    direction.y *= -1.0f;
+                }
+                Move();
             }
-            if (transform.position.y > boundary2)
-            {
-                direction.y *= -1.0f;
-            }
-            Move();
         }
     }
 
@@ -72,10 +75,12 @@ public class PlatformController : MonoBehaviour
     public void OnCollisionEnter2D(Collision2D other)
     {
         other.gameObject.transform.SetParent(transform);
+        rdyToMove = true;
     }
 
     public void OnCollisionExit2D(Collision2D other)
     {
         other.gameObject.transform.SetParent(null);
+        rdyToMove = false;
     }
 }
