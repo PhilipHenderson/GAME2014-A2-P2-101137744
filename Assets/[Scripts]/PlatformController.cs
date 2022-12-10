@@ -9,6 +9,7 @@ public class PlatformController : MonoBehaviour
     public Vector2 direction;
     public bool flying;
     public bool climbing;
+    public bool waiter;
     public bool rdyToMove;
     [SerializeField]
     private Vector2 currentPosition;
@@ -50,7 +51,22 @@ public class PlatformController : MonoBehaviour
 
         if (climbing)
         {
-            if (rdyToMove)
+            if (waiter)
+            {
+                if (rdyToMove)
+                {
+                    if (transform.position.y < boundary1)
+                    {
+                        direction.y *= -1.0f;
+                    }
+                    if (transform.position.y > boundary2)
+                    {
+                        direction.y *= -1.0f;
+                    }
+                    Move();
+                }
+            }
+            else
             {
                 if (transform.position.y < boundary1)
                 {

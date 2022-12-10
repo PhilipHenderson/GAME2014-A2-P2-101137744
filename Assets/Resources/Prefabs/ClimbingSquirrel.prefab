@@ -33,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7474544520918622350
 SpriteRenderer:
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b6abd85f6b8711c4f8fc71ccdce1fe9e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 16.5, y: 10.2}
@@ -149,7 +149,8 @@ MonoBehaviour:
   direction: {x: 0, y: 0}
   flying: 0
   climbing: 1
+  waiter: 0
   rdyToMove: 0
   currentPosition: {x: 0, y: 0}
-  boundary1: 12
-  boundary2: 25
+  boundary1: 48
+  boundary2: 61

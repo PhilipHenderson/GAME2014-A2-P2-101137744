@@ -9,23 +9,37 @@ public class BulletScript: MonoBehaviour
     public int bulletSpeed;
     public float bulletLife;
     public Vector2 moveDirection;
-    public Transform target;
     public LayerMask collisionLayerMask;
+    public bool player;
+    public bool enemy;
+
+    private Transform playerTarget;
+    private Transform target;
 
     private void Start()
     {
-        target = GameObject.Find("Player").transform;
+        playerTarget = GameObject.Find("Player").transform;
+        target = GameObject.Find("PlayersTarget").transform;
     }
 
     void Update()
     {
-        Vector3 direction = (target.position - transform.position).normalized;
-        moveDirection = direction;
+        if (enemy)
+        {
+            Vector3 playerDirection = (playerTarget.position - transform.position).normalized;
+            moveDirection = playerDirection;
+        }
+        else
+        {
+            Vector3 direction = target.position + transform.forward;
+            moveDirection = direction;
+        }
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        Move();
+        if (player) Move2();
+        else Move();
         DestroyByTime();
     }
 
@@ -39,10 +53,9 @@ public class BulletScript: MonoBehaviour
         transform.position += new Vector3(moveDirection.x, moveDirection.y) * bulletSpeed * Time.deltaTime;
     }
 
-    private void OnDrawGizmos()
+    public void Move2()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawLine(transform.position, target.position);
+        transform.position += new Vector3(moveDirection.x, 0.0f) * bulletSpeed * Time.deltaTime;
     }
 
     public void DestroyByTime()

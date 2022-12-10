@@ -22,7 +22,13 @@ public class PlayerController : MonoBehaviour
     public LayerMask collisionLayerMask;// the stuff we can collide with 
     public bool isGrounded;
 
-    [Header("Controls")]
+    [Header("Shooting Properties")]
+    public GameObject bullet;
+    public Transform bulletSpawnPoint;
+    public Transform target;
+    public Vector2 direction;
+
+    [Header("Controller Properties")]
     public Joystick leftStick;
     public float verticalThreathhold;
     [Range(0.1f, 1f)]
@@ -31,13 +37,19 @@ public class PlayerController : MonoBehaviour
     public Animator animator;
     public PlayerAnimationState playerAnimationState;
 
-    public Rigidbody2D rigidbody2D;
+    private Rigidbody2D rigidbody2D;
 
     void Start()
     {
+        direction = Vector2.left;
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         leftStick = (Application.isMobilePlatform) ? GameObject.Find("LeftStick").GetComponent<Joystick>() : null;
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.F))
+            Shoot();
     }
 
 
@@ -111,5 +123,10 @@ public class PlayerController : MonoBehaviour
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(groundPoint.position, groundRadius);
+    }
+
+    public void Shoot()
+    {
+        Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
     }
 }
