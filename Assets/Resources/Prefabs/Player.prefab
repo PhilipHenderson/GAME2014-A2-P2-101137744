@@ -160,6 +160,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff4eaef90edc7349aa1e11fc17866a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 0
+  maxHp: 0
+  score: 0
   horizontalForce: 50
   horizontalSpeed: 5
   verticalForce: 15
@@ -168,7 +171,10 @@ MonoBehaviour:
   groundRadius: 0.28
   collisionLayerMask:
     serializedVersion: 2
-    m_Bits: 960
+    m_Bits: 896
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
   isGrounded: 0
   bullet: {fileID: 3971780606098665942, guid: a2d2babc1b6efb04b8d529bd578ab553, type: 3}
   bulletSpawnPoint: {fileID: 6925136249733835678}

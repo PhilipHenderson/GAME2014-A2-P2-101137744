@@ -9,22 +9,19 @@ public class SeagullController : MonoBehaviour
     public GameObject bullet;
     public Transform bulletSpawnPoint;
     public Transform target;
-    public Collider2D gullCollider;
-    public float angle;
-    public float fireRate = 100;
     public LayerMask collisionLayerMask;
 
     public bool InAttackRange;
     public bool isDetected;
 
     public Vector2 ShootingDirection;
-
     public SeagullPlayerDetection isPlayerDetected;
+
+    private float angle;
 
     private void Awake()
     {
         target = GameObject.Find("Player").transform;
-        gullCollider = GetComponent<Collider2D>();
     }
     // Make and get a seagul Player Detection Script
     void Start()
@@ -51,10 +48,9 @@ public class SeagullController : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter2D(Collider2D collider)
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        collider = gullCollider;
-        if (collider.gameObject.name == "Player")
+        if (other.gameObject.name == "Player")
         {
             Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
         }
@@ -62,6 +58,6 @@ public class SeagullController : MonoBehaviour
 
     public void FireBullets()
     {
-        //Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        Instantiate(bullet, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
     }
 }

@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: -1613470385
   m_SortingLayer: 7
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 3abd407ff116ce14d90a40f5ea144da2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 61d7324dee5bb6a40bf0cc336e4f3dc8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_Size: {x: 3.75, y: 3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!58 &744908121
@@ -115,11 +115,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 1
-  bulletLife: 1
+  bulletLife: 1.5
+  bulletDamage: 0.1
   moveDirection: {x: 0, y: 0}
-  target: {fileID: 572464349895223417, guid: f0bb27c0815914d43b3c690f9e7dd162, type: 3}
   collisionLayerMask:
     serializedVersion: 2
     m_Bits: 72
   player: 0
   enemy: 1
+  playerController: {fileID: 0}
+  playerTarget: {fileID: 0}
+  target: {fileID: 0}

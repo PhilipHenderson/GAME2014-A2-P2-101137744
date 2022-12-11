@@ -12,6 +12,13 @@ public enum PlayerAnimationState
 
 public class PlayerController : MonoBehaviour
 {
+    [Header("Health Propertries")]
+    public float hp;
+    public float maxHp;
+
+    [Header("Score Propertries")]
+    public int score;
+
     [Header("Movement Propertries")]
     public float horizontalForce;
     public float horizontalSpeed;
@@ -20,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public Transform groundPoint; // Origion of the circle
     public float groundRadius; // the sizer of the circle
     public LayerMask collisionLayerMask;// the stuff we can collide with 
+    public LayerMask groundLayerMask;// the stuff we can collide with 
     public bool isGrounded;
 
     [Header("Shooting Properties")]
@@ -45,17 +53,20 @@ public class PlayerController : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         leftStick = (Application.isMobilePlatform) ? GameObject.Find("LeftStick").GetComponent<Joystick>() : null;
+        hp = maxHp;
     }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
             Shoot();
+
+        Debug.Log(hp);
     }
 
 
     void FixedUpdate()
     {
-        var hit = Physics2D.OverlapCircle(groundPoint.position, groundRadius, collisionLayerMask);
+        var hit = Physics2D.OverlapCircle(groundPoint.position, groundRadius, groundLayerMask);
         isGrounded = hit;
 
         Move();

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3971780606098665942
+--- !u!1 &1450320019015094291
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,39 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3971780606098665930}
-  - component: {fileID: 3971780606098665931}
-  - component: {fileID: 3971780606098665940}
-  - component: {fileID: 3971780606098665941}
-  m_Layer: 10
-  m_Name: PlayerBullet
+  - component: {fileID: 1450320019015094300}
+  - component: {fileID: 1450320019015094301}
+  - component: {fileID: 1450320019015094303}
+  - component: {fileID: 1450320019015094290}
+  m_Layer: 0
+  m_Name: Acorn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3971780606098665930
+--- !u!4 &1450320019015094300
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3971780606098665942}
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 1450320019015094291}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.4712043, y: -0.38915104, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!212 &3971780606098665931
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1450320019015094301
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3971780606098665942}
+  m_GameObject: {fileID: 1450320019015094291}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,57 +72,49 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -704045813
-  m_SortingLayer: 6
-  m_SortingOrder: 1
+  m_SortingLayerID: 1581352359
+  m_SortingLayer: 5
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 57f9bb6361e872544aa14ed06ad1d6db, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.41166666, y: 0.52}
+  m_Size: {x: 0.247, y: 0.312}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &3971780606098665940
-CircleCollider2D:
+--- !u!70 &1450320019015094303
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3971780606098665942}
+  m_GameObject: {fileID: 1450320019015094291}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.1
---- !u!114 &3971780606098665941
+  m_Offset: {x: 0.0013878196, y: -0.015265837}
+  m_Size: {x: 0.1665074, y: 0.22595617}
+  m_Direction: 0
+--- !u!114 &1450320019015094290
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3971780606098665942}
+  m_GameObject: {fileID: 1450320019015094291}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e721b9ae1c450b84ca6d98d9c8b7334b, type: 3}
+  m_Script: {fileID: 11500000, guid: f585364d600f8bc428284c6cc8b30fb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 1
-  bulletLife: 10
-  bulletDamage: 1
-  moveDirection: {x: 0, y: 0}
+  playerController: {fileID: 0}
   collisionLayerMask:
     serializedVersion: 2
-    m_Bits: 960
-  player: 1
-  enemy: 0
-  playerController: {fileID: 0}
-  playerTarget: {fileID: 0}
-  target: {fileID: 0}
+    m_Bits: 200
